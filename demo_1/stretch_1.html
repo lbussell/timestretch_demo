@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+      .drop-zone {
+        border-width: medium;
+        border-style: solid;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Read sources from soundtouch.js -->
+    <script src="core.js"></script>
+    <script src="pipe.js"></script>
+    <script src="rate-transposer.js"></script>
+    <script src="buffer.js"></script>
+    <script src="filter.js"></script>
+    <script src="stretch.js"></script>
+    <script src="soundtouch.js"></script>
+
+    <div id="drop-zone"
+      class="drop-zone"
+      ondrop="dropHandler(event);" 
+      ondragover="dragOverHandler(event);">
+      Drag an audio file here.
+    </div>
+
+    <input id="slider" type="range" min="0.5" max="2" step="0.01" value="1">
+    <div id="sliderValue">1.0</div>
+
+    <script src="test.js"></script>
+  </body>
+</html>
