@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- soundtouch-js sources -->
+    <script src="demo_1/core.js"></script>
+    <script src="demo_1/pipe.js"></script>
+    <script src="demo_1/rate-transposer.js"></script>
+    <script src="demo_1/buffer.js"></script>
+    <script src="demo_1/filter.js"></script>
+    <script src="demo_1/stretch.js"></script>
+    <script src="demo_1/soundtouch.js"></script>
+
+    <!-- OLA-ts sources -->
+    <script type="text/javascript" src="demo_2/cbuffer.js"></script>
+    <script type="text/javascript" src="demo_2/OLA.js"></script>
+    <script type="text/javascript" src="demo_2/buffered-ola.js"></script>
+    <script type="text/javascript" src="demo_2/player.js"></script>
+    <script type="text/javascript" src="demo_2/ui.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="column">
+            <div id="drag-and-drop" class="drag-and-drop">
+                Drag an audio file here.
+            </div>
+        </div>
+        <div class="column">
+            <div id="drop-zone" class="drop-zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+                Drag an audio file here.<br>
+                <input id="slider" type="range" min="0.5" max="2" step="0.01" value="1">
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="demo_1/test.js"></script>
+<script type="text/javascript" src="demo_2/drag-and-drop.js"></script>
+<script type="text/javascript" src="demo_2/app.js"></script>
+
+</html>

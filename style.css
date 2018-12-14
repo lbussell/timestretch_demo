@@ -1,0 +1,26 @@
+body {
+    font-family: sans-serif;
+}
+.wrap {
+    width: 100%;
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+    margin: 2pt;
+}
+
+#drag-and-drop {
+    background: lightblue;
+    padding: 10pt;
+    border-width: medium;
+    border-style: solid;
+}
+
+#drop-zone {
+    background: pink;
+    padding: 10pt;
+    border-width: medium;
+    border-style: solid;
+}

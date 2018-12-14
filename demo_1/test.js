@@ -46,14 +46,14 @@ function loadSample(data) {
     });
 }
 
-var BUFFER_SIZE = 1024;
-var samples = new Float32Array(BUFFER_SIZE * 2);
-var node = context.createScriptProcessor(BUFFER_SIZE, 2, 2);
+var BUFF = 1024;
+var samples = new Float32Array(BUFF * 2);
+var node = context.createScriptProcessor(BUFF, 2, 2);
 
 node.onaudioprocess = function (e) {
     var l = e.outputBuffer.getChannelData(0);
     var r = e.outputBuffer.getChannelData(1);
-    var framesExtracted = f.extract(samples, BUFFER_SIZE);
+    var framesExtracted = f.extract(samples, BUFF);
     if (framesExtracted == 0) {
         pause();
     }

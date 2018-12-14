@@ -172,7 +172,7 @@ CBuffer.prototype = {
 
 	// return the index an item would be inserted to if this
 	// is a sorted circular buffer
-	sortedIndex : function(value, comparitor, context) {
+	sortedIndex : function(value, comparitor, cx) {
 		comparitor = comparitor || defaultComparitor;
 		var low = this.start,
 			high = this.size - 1;
@@ -180,13 +180,13 @@ CBuffer.prototype = {
 		// Tricky part is finding if its before or after the pivot
 		// we can get this info by checking if the target is less than
 		// the last item. After that it's just a typical binary search.
-		if (low && comparitor.call(context, value, this.data[high]) > 0) {
+		if (low && comparitor.call(cx, value, this.data[high]) > 0) {
 			low = 0, high = this.end;
 		}
 
 		while (low < high) {
 		  var mid = (low + high) >>> 1;
-		  if (comparitor.call(context, value, this.data[mid]) > 0) low = mid + 1;
+		  if (comparitor.call(cx, value, this.data[mid]) > 0) low = mid + 1;
 		  else high = mid;
 		}
 		// http://stackoverflow.com/a/18618273/1517919
@@ -195,28 +195,28 @@ CBuffer.prototype = {
 
 	/* iteration methods */
 	// check every item in the array against a test
-	every : function (callback, context) {
+	every : function (callback, cx) {
 		var i = 0;
 		for (; i < this.size; i++) {
-			if (!callback.call(context, this.data[(this.start + i) % this.length], i, this))
+			if (!callback.call(cx, this.data[(this.start + i) % this.length], i, this))
 				return false;
 		}
 		return true;
 	},
 	// loop through each item in buffer
 	// TODO: figure out how to emulate Array use better
-	forEach : function (callback, context) {
+	forEach : function (callback, cx) {
 		var i = 0;
 		for (; i < this.size; i++) {
-			callback.call(context, this.data[(this.start + i) % this.length], i, this);
+			callback.call(cx, this.data[(this.start + i) % this.length], i, this);
 		}
 	},
 	// check items agains test until one returns true
 	// TODO: figure out how to emuldate Array use better
-	some : function (callback, context) {
+	some : function (callback, cx) {
 		var i = 0;
 		for (; i < this.size; i++) {
-			if (callback.call(context, this.data[(this.start + i) % this.length], i, this))
+			if (callback.call(cx, this.data[(this.start + i) % this.length], i, this))
 				return true;
 		}
 		return false;

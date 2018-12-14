@@ -1,4 +1,4 @@
-var context = new AudioContext();
+var ctx = new AudioContext();
 
 var BUFFER_SIZE = 4096;
 var FRAME_SIZE  = 4096;
@@ -15,7 +15,7 @@ var load_local_audio = function(e) {
               console.log(e);
           });
           reader.addEventListener('load', function (e) {
-              context.decodeAudioData(e.target.result, function(decodedData) {
+              ctx.decodeAudioData(e.target.result, function(decodedData) {
                 add_player(filename, decodedData);
               });
           });
@@ -35,8 +35,8 @@ var load_local_audio = function(e) {
 
 var add_player = function(title, decodedData) {
   var id = playersIdCounter++;
-  var player = new WAAPlayer(context, decodedData, FRAME_SIZE, BUFFER_SIZE);
-  var gain = context.createGain();
+  var player = new WAAPlayer(ctx, decodedData, FRAME_SIZE, BUFFER_SIZE);
+  var gain = ctx.createGain();
 
   var ui = new WAAPlayerUI(id, title, player, gain);
   ui.removeCallback = function() {
@@ -52,7 +52,7 @@ var add_player = function(title, decodedData) {
   };
 
   player.connect(gain);
-  gain.connect(context.destination);
+  gain.connect(ctx.destination);
 }
 
 var dd = new DragAndDrop(document.getElementById('drag-and-drop'));
